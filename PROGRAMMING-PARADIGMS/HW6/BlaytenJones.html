@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Blayten Jones's Page</title>
+        <style>
+            .question{
+                text-align: center;
+                background-color: transparent;
+            }
+            .answer_container{
+                display: flex;
+                justify-content: space-between;
+                padding-left: 1.5cm;
+                padding-right: 1.5cm;
+                padding-top: .5cm;
+                padding-bottom: .5cm;
+            }
+            body{
+                background: #FA8072;
+                color: #660e21;
+            }
+            a:link {
+                color: #bd6bcf;
+                background-color: transparent;
+                text-decoration: underline;
+            }   
+            a:visited {
+                color: #6f146a;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+            a:hover {
+                color: black;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+            a:active {
+                color: #eb1189;
+                background-color: transparent;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <h1>Blayten Jones's Page</h1>
+    <body>
+        <font size = '+2'>Welcome to my webpage! This is meant to be a quiz over the Super Nintendo Entertainment System that was introduced in Japan (as the Super Famicom) in 1990 and later in the United States in 1991. Here, you will answer three different questions regarding the console and see if you can get the highest score! Below is a link to the Wikipedia page about the history of the SNES!<br><br></font>
+        <font size = '+1'>Learn more about Nintendo's Super Entertainment System <a href="https://en.wikipedia.org/wiki/Super_Nintendo_Entertainment_System" target="_blank">here!</a></font><br><br><br>
+        <div class = "question"><h2>Q1: Which hardware add-on was a Japanese exclusive device that connected to satellite radio to install what could be considered to be an early predecessor to DLC (Downloadable Content)?</h2></div><br>
+        <div class = "answer_container">
+            <div onclick = "checkAnswer('answer1', 'answer1')"><font size = '+2'><center>A. Satellaview</center></font><img src="satellaview.png" alt="Satellaview" width="300" height="360"></div>
+            <div onclick = "checkAnswer('answer2', 'answer1')"><font size = '+2'><center>B. Super Gameboy</center></font><img src="supergameboy.png" alt="Super Gameboy" width="300" height="360"></div>
+            <div onclick = "checkAnswer('answer3', 'answer1')"><font size = '+2'><center>C. Superscope</center></font><img src="superscope.png" alt="Superscope" width="400" height="360"></div>
+        </div>
+        <div class = "answer_container">
+            <font size = '+3'><div id = "answer1"></div></font>
+            <font size = '+3'><div id = "answer2"></div></font>
+            <font size = '+3'><div id = "answer3"></div></font>
+        </div>
+        <div class = "question"><h2>Q2: The cartridge typically has a tendency to yellow, which gives it a unique color commonly found in antique electronics. What plastic is the cartridge created from that has this property?</h2></div><br>
+        <div class = "answer_container">
+            <div onclick = "checkAnswer('answer4', 'answer5')"><font size = '+2'><center>A. Polyvinyl Chloride (PVC)</center></font></div>
+            <div onclick = "checkAnswer('answer5', 'answer5')"><font size = '+2'><center>B. Acrylonitrile-Butadiene-Styrene (ABS)</center></font></div>
+            <div onclick = "checkAnswer('answer6', 'answer5')"><font size = '+2'><center>C. Polymethyl Methacrylate (PMMA)</center></font></div>
+        </div>
+        <div class = "answer_container">
+            <font size = '+3'><div id = "answer4"></div></font>
+            <font size = '+3'><div id = "answer5"></div></font>
+            <font size = '+3'><div id = "answer6"></div></font>
+        </div>
+        <div class = "question"><h2>Q3: The major selling point of the console over its predecessor was its special FX chip that could "seemingly" render 3D graphics by holding a "z-value" for its 2D sprite. This is only possible due to the chip upgrades! Which one is the most commonly used?</h2></div><br>
+        <div class = "answer_container">
+            <div onclick = "checkAnswer('answer7', 'answer7')"><font size = '+2'><center>A. DSP-1</center></font></div>
+            <div onclick = "checkAnswer('answer8', 'answer7')"><font size = '+2'><center>B. TMS320</center></font></div>
+            <div onclick = "checkAnswer('answer9', 'answer7')"><font size = '+2'><center>C. TRW TDC1010</center></font></div>
+        </div>
+        <div class = "answer_container">
+            <font size = '+3'><div id = "answer7"></div></font>
+            <font size = '+3'><div id = "answer8"></div></font>
+            <font size = '+3'><div id = "answer9"></div></font>
+        </div>
+        <center><button type = "button" onclick = "reset()" style = "width: 200px; height: 50px"><font size = '+3'>RESET</font></button></center>
+    </body>
+</html>
+
+
+
+<script>
+
+    function checkAnswer(id, correct){
+        document.getElementById(id).innerHTML = (id == correct) ? "CORRECT" : "INCORRECT";
+    }
+
+    function reset(){
+        for(let i = 0; i < 9; i++){
+            console.log("answer" + i);
+            document.getElementById("answer" + (i + 1)).innerHTML = "";
+        }
+    }
+
+</script>

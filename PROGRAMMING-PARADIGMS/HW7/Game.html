@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>A7 - From Java to Javascript</title>
+    </head>
+    <canvas id = "myCanvas" width = "1400" height = "700" style = "border:1px solid #cccccc;"></canvas>
+</html>
+
+<script>
+    // Blayten K. Jones //
+    //    10/27/2022    //
+    //Creates a parent class for all visuals//
+    class Sprite{
+        constructor(x1, y1, image_url){
+            this.ground = 500;
+            this.x = x1; this.y = y1;
+            this.imageIndex = 0;
+            this.lazyLoadImage(image_url);
+        }
+
+        update(){
+        }
+        //Graphics, Int
+        draw(g, scrollPos){
+        }
+        lazyLoadImage(image_url){
+        }
+
+        //returns the "simple" name string of the object which represents its ID
+        returnID(){
+            return this.constructor.name;
+        }
+
+        //returns boolean given a Sprite dubbed "collider"
+        collisionDetection(collider){
+            this.selfRight = this.x + this.w;
+            this.colliderRight = collider.x + collider.w;
+            this.selfBottom = this.y + this.h;
+            this.colliderBottom = collider.y + collider.h;
+            //checks right collision.
+            if(this.selfRight < collider.x){
+                return false;
+            }
+            //checks left collision.
+            if(this.x > this.colliderRight){
+                return false;
+            }
+            //checks top collision.
+            if(this.selfBottom < collider.y){
+                return false;
+            }
+            //checks bottom collision.
+            if(this.y > this.colliderBottom){
+                return false;
+            }
+            return true;
+        }
+
+        animate(){
+            //Loops between the amount of frames an image has.
+            this.imageIndex++;
+            this.imageIndex %= this.frames;
+        }
+    }
+
+
+
+
+
+    // Blayten K. Jones //
+    //    9/28/2022     //
+    //Contains the position of each individual pipe//
+    class Pipe extends Sprite {
+        static image = null;
+        
+        constructor(x, y, image_url){
+            super(x, y, image_url);
+            this.frames = 1;
+            this.h = 400; this.w = 55;
+        }
+
+        lazyLoadImage(image_url) {
+            //Lazy loads the pipe image; if it is not found, it throws an error.
+            try{
+                if(this.image == null){
+                    this.image = new Image();
+                    this.image.src = image_url;
+                }
+            }catch(e){
+                console.log("Could not find pipe image.")
+            }
+        }
+
+        //Graphics, Int
+        draw(g, scrollPos){
+            g.drawImage(this.image, this.x - scrollPos, this.y, this.w, this.h, null);
+        }
+
+        //Returns boolean
+        existsHere(x1, y1){
+            //Determines if a pipe exists at the position at these coordinates.
+            if((x1 > this.x && x1 < (this.x + this.w)) && (y1 > this.y && y1 < (this.y + this.h))){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        toString(){
+            return "Pipe (x,y) = (" + this.x + ", " + this.y + "), width = " + this.w + ", height = " + this.h;
+        }
+
+        update(){
+        }
+    }
+
+
+
+
+
+    // Blayten K. Jones //
+    //    9/15/2022     //
+    //Holds graphical representation//
+    class Model{
+        constructor(){
+            this.sprites = [];
+            this.player = new Mario(100, 100, ["mario1.png", "mario2.png", "mario3.png", "mario4.png", "mario5.png"]);
+            this.sprites.push(this.player);
+        }
+
+        //NOTE: updates the position of all sprites and checks for general collisions
+        update(){
+            this.check = false;
+            for(var i = 0; i < this.sprites.length; i++){
+                this.collidee = this.sprites[i];
+                this.collidee.update();
+                //Removes the sprite if the remove variable is true
+                if(this.collidee.remove){
+                    this.sprites.splice(i, 1);
+                }
+                //Checks every sprite compared to a different sprite for collision
+                for(var j = 0; j < this.sprites.length; j++){
+                    this.collider = this.sprites[j];
+                    //If the sprite colliding with something is not a pipe (as pipes do not move) then check to see that it is not
+                    //the same sprite as itself. Finally, it determines if the sprite is overlapping with a different sprite.
+                    if((this.collider.returnID() != "Pipe") && (i != j) && (this.collider.collisionDetection(this.collidee))){
+                        this.check = true;
+                        //I really tried my best to do something elegant. Have this code instead.
+                        if(this.collider.returnID() == "Mario"){
+                            if(this.collidee.returnID() == "Pipe"){
+                                this.collider.pushOutOfCollision(this.collidee);
+                            }
+                        }else if(this.collider.returnID() == "Goomba"){
+                            if(this.collidee.returnID() == "Pipe"){
+                                this.collider.pushOutOfCollision(this.collidee);
+                            }else if(this.collidee.returnID() == "Fireball"){
+                                //Sets the Goomba on fire if it collides with fireball.
+                                this.collider.flaming = true;
+                                this.sprites.splice(i, 1);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            if(!this.check){
+                this.player.isOnPipe = false;
+                for(var i = 0; i < this.sprites.length; i++){
+                    if(this.sprites[i].returnID() == "Goomba"){
+                        (this.sprites[i]).isOnPipe = false;
+                    }
+                }
+            }
+        }
+
+        //NOTE: sets the sprite's position when given an x and y value
+        //It will then use a certain function depending on its ID.
+        addSprite(x, y, ID){
+            switch(ID){
+                case "Goomba":
+                    this.sprites.push(new Goomba(x, y, ["goomba.png", "goomba_fire.png"]));
+                    break;
+                case "Fireball":
+                    this.sprites.push(new Fireball(x, y, this.player.rightFacing, "fireball.png"));
+                    break;
+                case "Pipe":
+                    this.sprites.push(new Pipe(x, y, "pipe.png"));
+                    break;
+            }
+        }
+    }
+
+
+
+
+
+    // Blayten K. Jones //
+    //    10/27/2022    //
+    //Enemy sprite that moves back and forth//
+    class Goomba extends Sprite{
+        static animation = null;
+
+        constructor(x, y, image_urls){
+            super(x, y, image_urls);
+            this.px = 0;
+            this.py = 0;
+            this.vertVelocity = 0.0;
+            this.flaming = false;
+            this.rightFacing = false;
+            this.isOnPipe = false;
+            this.deleteTimer = 0;
+            this.h = 45; this.w = 37;
+        }
+
+        update(){
+            this.vertVelocity += 1.2;
+            this.y += this.vertVelocity;
+
+            if(this.y > this.ground-this.h){
+                this.vertVelocity = 0.0;
+                this.y = this.ground-this.h; // snap back to the ground
+            }
+
+            if(this.isOnPipe){
+                this.vertVelocity = 0.0;
+            }
+
+            //moves the x left or right (depending on which direction it is facing) at a speed of 5. It will stop if it is on fire.
+            this.x += (this.flaming ? 0 : 1) * (this.rightFacing ? 1 : -1) * 5;
+
+            this.imageIndex = (this.flaming ? 1 : 0);
+
+            //Increments the delete counter if the goomba is currently on fire.
+            this.deleteTimer += (this.flaming ? 1 : 0) * 1;
+
+            //Sets the goomba for deletion after 30 cycles of being on fire.
+            this.remove = (this.deleteTimer > 30);
+            
+            //In the case that it interacts with a pipe diagonally, the gravity will become slower as it is both in the state of being
+            //"on the pipe" and falling. This line of code ensures that anytime the character is falling, it is not on the pipe.
+            if(this.py != this.y){
+                this.isOnPipe = false;
+            }
+        }
+
+        lazyLoadImage(image_url){
+            //Lazy loads the animation for the goomba; if one of the images is not found, it throws an error.
+            if(this.animation == null){
+                this.animation = [];
+                frames = 1;
+                try{
+                    this.animation[0] = new Image();
+                    this.animation[0].src = image_url[0];
+                    this.animation[1] = new Image();
+                    this.animation[1].src = image_url[1];
+                }catch(e){
+                    console.log("Either the goomba image or the goomba_fire does not exist.");
+                }
+            }
+        }
+
+        setPreviousPos(){
+            this.px = this.x; this.py = this.y;
+        }
+
+        pushOutOfCollision(sprite){
+            //Top collision.
+            //Does not work with the standard height trick...
+            if((this.py) <= sprite.y){
+                this.y = sprite.y - this.h;
+                this.isOnPipe = true;
+                return;
+            }
+
+            //Left collision.
+            if((this.px - this.w) < sprite.x){
+                this.rightFacing = false;
+                //It needs this or else it will teleport through the pipes. This is likely due to the fact that the width is actively changing
+                this.px = sprite.x - sprite.w;
+                this.x = this.px;
+            }
+            //Right collision.
+            if(this.px > (sprite.x - sprite.w)){
+                this.isOnPipe = false;
+                this.x = sprite.x + sprite.w;
+                this.rightFacing = true;
+            }
+
+            //no Bottom collision is needed as goombas don't jump
+        }
+
+        existsHere(x1, y1){
+            //Determines if a pipe exists at the position at these coordinates.
+            if((x1 > this.x && x1 < (this.x + this.w)) && (y1 > this.y && y1 < (this.y + this.h))){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        toString(){
+            return "Goomba (x,y) = (" + this.x + ", " + this.y + "), width = " + this.w + ", height = " + this.h + "; Frame = " + this.imageIndex + "; Flaming = " + this.flaming;
+        }
+    }
+
+
+
+
+
+    // Blayten K. Jones //
+    //    10/27/2022    //
+    //Projectile sprite that is released by Mario and kills enemies//
+    class Fireball extends Sprite {
+        static image;
+        
+        constructor(x, y, right, image_url){
+            super(x, y, image_url);
+            this.rightFacing = true;
+            this.existenceTimer = 0;
+            this.groundX = 0;
+            this.hitGround = false;
+            this.w = 47; this.h = 47;
+            this.rightFacing = right;
+            this.frames = 1;
+        }
+        
+        //Graphics, Int
+        draw(g, scrollPos){
+            g.drawImage(this.image, this.x - scrollPos, this.y, this.w, this.h, null);
+        }
+
+        update(){
+            //Counts how many cycles the fireball has existed.
+            this.existenceTimer += 1;
+            if(!this.hitGround){
+                this.y += 39;
+                if(this.y > this.ground - this.h){
+                    this.y = this.ground - this.h;
+                    //Stores the x at which it hit the ground so that we can offset the sin function
+                    this.groundX = this.x;
+                    this.hitGround = true;
+                }
+            }else{
+
+                //Uses the graph of abs(sin(x)) as a basis for movement. I then stretched both the y and x to give a certain feel.
+                //The 60 acts as an offset.
+                this.y = this.ground + (145.0 * -Math.abs((Math.sin(.025*(this.x - this.groundX)))));
+            }
+            //Moves the fireball left or right at a speed of 11.
+            this.x += (this.rightFacing ? 1 : -1) * 11;
+            //Removes the fireball after 116 cycles of existence (this allows the fireball to keep existing if the player is following it).
+            this.remove = this.existenceTimer > 116;
+        }
+
+        lazyLoadImage(image_url){
+            try{
+                if(this.image == null){
+                    this.image = new Image();
+                    this.image.src = image_url;
+                }
+            }catch(e){
+                console.log("Could not find fireball image.")
+            }
+        }
+
+        toString(){
+            return "Fireball (x,y) = (" + this.x + ", " + this.y + "), width = " + this.w + ", height = " + this.h + "; Frame = " + this.imageIndex;
+        }
+    }
+
+
+
+
+
+    // Blayten K. Jones //
+    //    9/15/2022     //
+    //Implements the player's view//
+    class View
+    {
+        //NOTE: The controller is passed in to connect the button to the actionlistener and to set the current view to this one!
+        //Model
+        constructor(m)
+        {
+            this.scrollPos = 0;
+            this.model = m;
+            this.canvas = document.getElementById("myCanvas");
+            //NOTE: only fills the memory; it does not actually draw the image to the screen.
+        }
+
+        update(){
+            this.scrollPos = this.model.player.x - 100;
+            let ctx = this.canvas.getContext("2d");
+            ctx.clearRect(0, 0, 2000, 500);
+            ctx.beginPath();
+            ctx.rect(-10, -10, 2000, 1000);
+            ctx.fillStyle = "cyan";
+            ctx.fill();
+            for(let i = 0; i < this.model.sprites.length; i++)
+            {
+                let sprite = this.model.sprites[i];
+                (sprite.returnID() == "Mario" || sprite.returnID() == "Goomba") ? ctx.drawImage(sprite.animation[sprite.imageIndex], sprite.x - this.scrollPos, sprite.y) : ctx.drawImage(sprite.image, sprite.x - this.scrollPos, sprite.y);
+            }
+            ctx.beginPath();
+            ctx.rect(-10, 500, 2000, 405);
+            ctx.fillStyle = "orange";
+            ctx.fill();
+        }
+
+        //static loadImage(imageName){
+            //this.image = null;
+            //try{
+                //this.image = ImageIO.read(new File(imageName));
+            //}catch(e){
+                //e.printStackTrace(System.err);
+                //System.exit(1);
+            //}
+            //return this.image;
+        //}
+
+        toString(){
+            return "View Scroll Position = " + this.scrollPos;
+        }
+    }
+
+
+
+
+
+    // Blayten K. Jones //
+    //    10/13/2022    //
+    //Contains the player character's sprites and position//
+    class Mario extends Sprite{
+        static animation = null;
+
+        constructor(x, y, image_urls){
+            super(x, y, image_urls);
+            this.px = 0;
+            this.py = 0;;
+            this.vertVelocity = 0;
+            this.jumpTimer = 0;
+            this.isOnPipe = false;
+            this.rightFacing = true;
+            this.jumpTimer = 0;
+            this.w = 60; this.h = 95;
+        }
+
+        lazyLoadImage(image_urls) {
+            //Lazy loads the animation for the player; if one of the images is not found, it throws an error.
+            if(this.animation == null){
+                this.animation = [];
+                this.frames = 5;
+                for(var i = 0; i < this.frames; i++){
+                    try{
+                        this.animation[i] = new Image();
+                        this.animation[i].src = image_urls[i];
+                    }catch(e){
+                        console.log("Player image " + (i + 1) + " does not exist.");
+                    }
+                }
+                let myImg = document.querySelector("#imgId");
+            }
+        }
+
+        //Graphics, Int
+        draw(g, scrollPos){
+            //Creates player's sprite.
+            //Uses a ternary operator to determine if the player is facing left. If they are, it will add on the width to the position
+            //and make its width negative to effectively flip the image around.
+            g.drawImage(this.animation[imageIndex], this.x - scrollPos + (this.rightFacing ? 0 : this.w), this.y, (this.rightFacing ? 1 : -1) * this.w, this.h, null);
+        }
+
+        update(){
+            this.vertVelocity += 1.2;
+            this.y += this.vertVelocity;
+            this.jumpTimer++;
+
+            if(this.y > this.ground-this.h){
+                this.vertVelocity = 0.0;
+                this.y = this.ground-this.h; // snap back to the ground
+                this.jumpTimer = 0;
+            }
+
+            if(this.isOnPipe){
+                this.vertVelocity = 0.0;
+                this.jumpTimer = 0;
+            }
+            //In the case that it interacts with a pipe diagonally, the gravity will become slower as it is both in the state of being
+            //"on the pipe" and falling. This line of code ensures that anytime the character is falling, it is not on the pipe.
+            if(this.py != this.y){
+                this.isOnPipe = false;
+            }
+        }
+
+        pushOutOfCollision(sprite){
+            //Top collision.
+            if((this.py + this.h) <= sprite.y){
+                this.isOnPipe = true;
+                this.y = sprite.y - this.h;
+                return;
+            }
+
+            this.isOnPipe = false;
+
+            //Bottom collision.
+            if(this.py >= (sprite.y + sprite.h)){
+                //This part of the collision ensures that if the player "bonks" into the sprite, they will fall back down and have their
+                //velocity eaten (this makes the collision feel more realistic).
+                this.vertVelocity = 0;
+                this.jumpTimer = 5;
+                this.y = sprite.y + sprite.h;
+                return;
+            }
+
+            //Left collision.
+            if((this.px - this.w) < sprite.x){
+                this.x = sprite.x - this.w;
+            }
+            
+            //Right collision.
+            if(this.px > (sprite.x - sprite.w)){
+                this.x = sprite.x + sprite.w;
+            }
+        }
+
+        setPreviousPos(){
+            this.px = this.x; this.py = this.y;
+        }
+
+        toString(){
+            return "Mario (x,y) = (" + this.x + ", " + this.y + "), width = " + this.w + ", height = " + this.h + "; Frame = " + this.imageIndex + "; Velocity y = " + this.vertVelocity;
+        }
+    }
+
+
+
+
+
+    // Blayten K. Jones //
+    //    9/15/2022     //
+    //Sets the destination on the model and takes user input//
+    class Controller
+    {
+        constructor(model, view)
+        {
+            this.model = model;
+            this.view = view;
+            this.key_right = false;
+            this.key_left = false;
+            this.key_up = false;
+            this.key_down = false;
+            this.step = 6;
+            this.reset = true;
+            let self = this;
+            document.addEventListener('keydown', function(event) { self.keyDown(event); }, false);
+            document.addEventListener('keyup', function(event) { self.keyUp(event); }, false);
+        }
+
+        keyDown(event)
+        {
+            if(event.keyCode == 39) this.key_right = true;
+            else if(event.keyCode == 37) this.key_left = true;
+            if((event.keyCode == 17) && this.reset) this.key_control = true;
+            if(event.keyCode == 32) this.key_space = true;
+        }
+
+        keyUp(event)
+        {
+            if(event.keyCode == 39) this.key_right = false;
+            else if(event.keyCode == 37) this.key_left = false;
+            if(event.keyCode == 17) this.key_control = false;
+            if(event.keyCode == 32) this.key_space = false;
+            this.reset = true;
+        }
+
+        update()
+        {
+            this.model.player.setPreviousPos();
+            for(var i = 0; i < this.model.sprites.length; i++){
+                if(this.model.sprites[i].returnID() == "Goomba"){
+                    (this.model.sprites[i]).setPreviousPos();
+                }
+            }
+            if(this.key_right) 
+            {	
+                this.model.player.rightFacing = true;
+                this.model.player.x += this.step;
+                this.model.player.animate();
+            }
+            if(this.key_left)
+            {
+                this.model.player.rightFacing = false;
+                this.model.player.x -= this.step;
+                this.model.player.animate();
+            }
+            if(this.key_space){
+                if(this.model.player.jumpTimer < 5){
+                    this.model.player.isOnPipe = false;
+                    this.model.player.vertVelocity -= 5.5;
+                }
+            }
+            if(this.key_control){
+                this.reset = false;
+                this.model.addSprite(this.model.player.x, this.model.player.y, "Fireball");
+                this.key_control = false;
+            }
+        }
+    }
+
+
+
+
+
+    class Game
+    {
+        constructor()
+        {
+            this.model = new Model();
+            this.view = new View(this.model);
+            this.controller = new Controller(this.model, this.view);
+            this.model.addSprite(474, 281, "Pipe"); this.model.addSprite(656, 210, "Pipe"); this.model.addSprite(1098, 298, "Pipe"); this.model.addSprite(33, 280, "Pipe"); this.model.addSprite(-189, 402, "Pipe"); this.model.addSprite(-51, 359, "Pipe"); this.model.addSprite(750, 450, "Goomba"); this.model.addSprite(800, 450, "Goomba"); this.model.addSprite(200, 450, "Goomba");
+        }
+    
+        onTimer()
+        {
+            this.controller.update();
+            this.model.update();
+            this.view.update();
+        }
+    }
+    
+    let game = new Game();
+    let timer = setInterval(function() { game.onTimer(); }, 40);
+</script>
