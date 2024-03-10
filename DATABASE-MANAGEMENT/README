@@ -1,0 +1,49 @@
+
+1. cd                        // go to your home directory
+2. chmod o+x public_html     // make sure that your web directory is accessible by everyone
+3. cd public_html            // go to your web space
+4. cp ~sgauch/public_html/4523/S23/hw/project/*.tar .     // copy the 4 tar files to your new directory
+5. tar xvf project_cpp.tar   // untar the sample C++ code
+6. chmod o+x project_cpp     // make the project_cpp directory accessible by everyone
+7. cd project_cpp            // move into the project directory
+8. Open:  http://www.csce.uark.edu/~MYUSERNAME/project_cpp/hello.html in a web browser
+9. Edit hello.php; replace MYUSERNAME
+10. Edit odbc_insert_item.php; replace MYUSERNAME
+11. Edit odbc_insert_item.cpp; replace MYUSERNAME (twice) and MYMYSQLPASSWORD
+12. sh build_odbc.bash         // compile the sample code
+13. Open:  http://www.csce.uark.edu/~MYUSERNAME/project_cpp/hello.php in a web browser
+14. Open:  http://www.csce.uark.edu/~MYUSERNAME/project_cpp/odbc_insert_item.php in a web browser
+
+
+build_odbc.bash
+   The bash shell script that compiles everything together.
+
+hello.html
+   A static html page to check that your project directory is accessible on the web
+   You can view this page at http://www.csce.uark.edu/~sgauch/project_cpp/hello.html
+
+hello.php
+   A php page that uses a form to get user input, then calls hello.exe to echo it to the screen.
+   This checks that you can call php in your own directory and have it pass parameters to
+   an executable program.
+   You can view this page at http://www.csce.uark.edu/~sgauch/project_cpp/hello.php
+
+hello.cpp
+   The executable program called from hello.php.
+
+odbc_db.h and odbc_db.cpp
+   The odbc_db class definition (header and implementation files).
+   This class contains a handful of useful functions that use odbc to connect to mysql.
+
+odbc_insert_item.cpp
+   A C++ program that is includes (and uses) the odbc_db class.  It is given arguments on the
+   command line, in the order:  name price_per_lb roasting
+   e.g.,
+      turing$ odbc_insert_item.exe  best_coffee 12 M 
+   It connects to mysql to insert that item into the ITEM table.The program has the ID hard-coded,so you need to change the ID everytime you run your program. Nevertheless, this is just a sample to show you how Php with C++ can be used to access MySQL.
+
+odbc_insert_item.php
+   The php program that displays a form, parses the user's input, then calls a program,
+   i.e., odbc_insert_item.exe, using a system call.
+   The program called connects to mysql to insert a record into a table.
+   You can view this page at http://www.csce.uark.edu/~sgauch/project_cpp/odbc_insert_item.php

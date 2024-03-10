@@ -1,0 +1,245 @@
+Script started on 2023-11-13 10:16:47-0600
+]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ [K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ [K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ [K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ [K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ exit./query.sh Gauch[K[K[K[K[K[K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh [K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh 20
+----compiling
+[01m[Klex.yy.c:1284:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid yyunput(int, char*)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+ static void [01;35m[Kyyunput[m[K( int c, register char *yy_bp )
+             [01;35m[K^~~~~~~[m[K
+Made by Blayten Jones
+----Taking in query
+0) 20
+
+RANK~~~DOCID~~~DOC_NAME~~~~~~~~~~~~~WEIGHT~~~
+
+1)     434     1464.html            1.809                   
+
+2)     240     1562.html            1.7232                  
+
+3)     397     medium.html          1.1816                  
+
+4)     315     617.html             0.9366                  
+
+5)     961     603.html             0.922                   
+
+6)     795     684.html             0.9204                  
+
+7)     859     964.html             0.7896                  
+
+8)     278     1426.html            0.7786                  
+
+9)     703     474.html             0.7518                  
+
+10)    337     233.html             0.7258                  
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETURNED 10 DIFFERENT RESULTS IN 0.003431 SECONDS!
+]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh 20[K[KGauch[K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh Gauch[K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh Gauch
+----compiling
+[01m[Klex.yy.c:1284:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid yyunput(int, char*)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+ static void [01;35m[Kyyunput[m[K( int c, register char *yy_bp )
+             [01;35m[K^~~~~~~[m[K
+Made by Blayten Jones
+----Taking in query
+0) gauch
+
+RANK~~~DOCID~~~DOC_NAME~~~~~~~~~~~~~WEIGHT~~~
+
+1)     164     simple.html          10.2788                 
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETURNED 1 DIFFERENT RESULTS IN 0.000377 SECONDS!
+]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh Gauch[K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh Gauch[K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh Gauch[K[K[K[K[Kthe
+----compiling
+[01m[Klex.yy.c:1284:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid yyunput(int, char*)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+ static void [01;35m[Kyyunput[m[K( int c, register char *yy_bp )
+             [01;35m[K^~~~~~~[m[K
+Made by Blayten Jones
+----Taking in query
+0) the
+
+UNFORTUNATELY NO RESULTS COULD BE FOUND! TRY A DIFFERENT QUERY
+RETURNED 0 DIFFERENT RESULTS IN 0.000325 SECONDS!
+]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh the[K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh the[K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh the[K[K[KLaunch
+----compiling
+[01m[Klex.yy.c:1284:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid yyunput(int, char*)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+ static void [01;35m[Kyyunput[m[K( int c, register char *yy_bp )
+             [01;35m[K^~~~~~~[m[K
+Made by Blayten Jones
+----Taking in query
+0) launch
+
+RANK~~~DOCID~~~DOC_NAME~~~~~~~~~~~~~WEIGHT~~~
+
+1)     384     195.html             0.9204                  
+
+2)     485     567.html             0.8398                  
+
+3)     208     1747.html            0.1782                  
+
+4)     286     42.html              0.118                   
+
+5)     439     1812.html            0.0608                  
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETURNED 5 DIFFERENT RESULTS IN 0.000451 SECONDS!
+]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh Launch[K[K[K[K[K[Klaunch
+----compiling
+[01m[Klex.yy.c:1284:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid yyunput(int, char*)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+ static void [01;35m[Kyyunput[m[K( int c, register char *yy_bp )
+             [01;35m[K^~~~~~~[m[K
+Made by Blayten Jones
+----Taking in query
+0) launch
+
+RANK~~~DOCID~~~DOC_NAME~~~~~~~~~~~~~WEIGHT~~~
+
+1)     384     195.html             0.9204                  
+
+2)     485     567.html             0.8398                  
+
+3)     208     1747.html            0.1782                  
+
+4)     286     42.html              0.118                   
+
+5)     439     1812.html            0.0608                  
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETURNED 5 DIFFERENT RESULTS IN 0.000675 SECONDS!
+]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ [K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ [K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh launch[K[K[K[K[K[Kvehicle
+----compiling
+[01m[Klex.yy.c:1284:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid yyunput(int, char*)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+ static void [01;35m[Kyyunput[m[K( int c, register char *yy_bp )
+             [01;35m[K^~~~~~~[m[K
+Made by Blayten Jones
+----Taking in query
+0) vehicle
+
+RANK~~~DOCID~~~DOC_NAME~~~~~~~~~~~~~WEIGHT~~~
+
+1)     740     1725.html            1.4444                  
+
+2)     485     567.html             0.7018                  
+
+3)     687     80.html              0.479                   
+
+4)     449     1770.html            0.4532                  
+
+5)     388     1071.html            0.4234                  
+
+6)     902     1785.html            0.401                   
+
+7)     729     1445.html            0.3706                  
+
+8)     968     52.html              0.2786                  
+
+9)     756     16.html              0.2594                  
+
+10)    407     1362.html            0.2424                  
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETURNED 10 DIFFERENT RESULTS IN 0.000387 SECONDS!
+]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ [K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ [K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh vehiclelvehicleavehicleuvehiclenvehiclecvehiclehvehicle vehicle
+----compiling
+[01m[Klex.yy.c:1284:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid yyunput(int, char*)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+ static void [01;35m[Kyyunput[m[K( int c, register char *yy_bp )
+             [01;35m[K^~~~~~~[m[K
+Made by Blayten Jones
+----Taking in query
+0) launch
+1) vehicle
+
+RANK~~~DOCID~~~DOC_NAME~~~~~~~~~~~~~WEIGHT~~~
+
+1)     485     567.html             1.5416                  
+
+2)     740     1725.html            1.4444                  
+
+3)     384     195.html             0.9204                  
+
+4)     687     80.html              0.479                   
+
+5)     449     1770.html            0.4532                  
+
+6)     388     1071.html            0.4234                  
+
+7)     902     1785.html            0.401                   
+
+8)     729     1445.html            0.3706                  
+
+9)     968     52.html              0.2786                  
+
+10)    756     16.html              0.2594                  
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETURNED 10 DIFFERENT RESULTS IN 0.000576 SECONDS!
+]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ [K]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh launch vehicle[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[Krobot
+----compiling
+[01m[Klex.yy.c:1284:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid yyunput(int, char*)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+ static void [01;35m[Kyyunput[m[K( int c, register char *yy_bp )
+             [01;35m[K^~~~~~~[m[K
+Made by Blayten Jones
+----Taking in query
+0) robot
+
+RANK~~~DOCID~~~DOC_NAME~~~~~~~~~~~~~WEIGHT~~~
+
+1)     652     82.html              2.3014                  
+
+2)     954     1381.html            1.7112                  
+
+3)     602     35.html              1.3814                  
+
+4)     79      55.html              1.265                   
+
+5)     665     1218.html            1.1482                  
+
+6)     220     1575.html            1.1482                  
+
+7)     840     49.html              1.148                   
+
+8)     19      438.html             1.1228                  
+
+9)     132     302.html             0.7716                  
+
+10)    591     493.html             0.7544                  
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETURNED 10 DIFFERENT RESULTS IN 0.000769 SECONDS!
+]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ ./query.sh robot launch vehicle
+----compiling
+[01m[Klex.yy.c:1284:13:[m[K [01;35m[Kwarning: [m[K‘[01m[Kvoid yyunput(int, char*)[m[K’ defined but not used [[01;35m[K-Wunused-function[m[K]
+ static void [01;35m[Kyyunput[m[K( int c, register char *yy_bp )
+             [01;35m[K^~~~~~~[m[K
+Made by Blayten Jones
+----Taking in query
+0) robot
+1) launch
+2) vehicle
+
+RANK~~~DOCID~~~DOC_NAME~~~~~~~~~~~~~WEIGHT~~~
+
+1)     652     82.html              2.3014                  
+
+2)     954     1381.html            1.7112                  
+
+3)     485     567.html             1.5416                  
+
+4)     740     1725.html            1.4444                  
+
+5)     602     35.html              1.3814                  
+
+6)     79      55.html              1.265                   
+
+7)     665     1218.html            1.1482                  
+
+8)     220     1575.html            1.1482                  
+
+9)     840     49.html              1.148                   
+
+10)    19      438.html             1.1228                  
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+RETURNED 10 DIFFERENT RESULTS IN 0.001242 SECONDS!
+]0;bkj011@turing: ~/public_html/IR_HW_4[01;32mbkj011@turing[00m:[01;34m~/public_html/IR_HW_4[00m$ exit
+exit
+
+Script done on 2023-11-13 10:18:20-0600
