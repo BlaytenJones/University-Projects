@@ -16,7 +16,7 @@ using std::tolower;
 
 char Ch;
 const int SIZE = 60000;
-HashTable ht(3*SIZE);
+HashTable ht(1.6*SIZE);
 string Prevname = "";
 int numOfTotalTokens = 0;
 bool currNewLine = false;
@@ -27,23 +27,6 @@ int numOfDocsIn[1000];
 bool stopListInit = true;
 const int STOPLISTSIZE = 150;
 HashTable stopList(3*STOPLISTSIZE);
-
-const int MAXFILESOPEN = 1000;
-const int MAXFILESTOTAL = 100000;
-//Note that MAXFILESTOTAL is much larger than MAXFILESOPEN. The current distro of Linux that Turing runs on only allows ~1,000 files
-//open at the same time. Since the buffer relies on the alphabetical order of the tokens, it is necessary to switch between the first
-//1000ish files of the filePtrs, then switch to the next 1000, and so on.
-struct FILEANDNAME{
-        FILE* fileptr = nullptr;
-        string filename = "";
-};
-FILEANDNAME filePtrs[MAXFILESTOTAL];
-struct fileInfo{
-        string term = "";
-        float weight = 0;
-        int fileID = -1;
-};
-fileInfo buffer[MAXFILESOPEN][MAXFILESTOTAL/MAXFILESOPEN + 1];
 
 //used for non-general downcasing
 char* Downcase(const char* input){
@@ -96,34 +79,6 @@ void ProcessHashtable(){
 	docID++;
 }
 
-void openClusterFiles(size_t index){
-        const char* currFilename;
-        for(size_t i = index*MAXFILESOPEN; i < (index+1)*MAXFILESOPEN; i++){
-                currFilename = filePtrs[i].filename.c_str();
-                if(strcmp(currFilename, "") != 0){
-                        filePtrs[i].fileptr = fopen(currFilename, "r");
-                }
-        }
-}
-
-void closeClusterFiles(size_t index){
-	cout << "D" << endl;
-        const char* currFilename;
-        for(size_t i = index*MAXFILESOPEN; i < (index+1)*MAXFILESOPEN; i++){
-		cout << i << " " << filePtrs[i].filename << " " << filePtrs[i].fileptr << endl;
-		currFilename = filePtrs[i].filename.c_str();
-		cout << "A" << endl;
-                if(strcmp(currFilename, "") != 0){
-                        cout << "B: " << filePtrs[i].fileptr << " " << (filePtrs[i].fileptr != nullptr) << endl;
-			if (ferror(filePtrs[i].fileptr)){
-				fprintf(stderr, "Error occurred while reading file: %s\n", strerror(errno));
-			}
-			fclose(filePtrs[i].fileptr);
-			cout << "C" << endl;
-                }
-        }
-}
-
 %}
 
 WHITESPACE [\t\r\n\v ]+
@@ -173,6 +128,7 @@ string OutFilename;
 string InFilename;
 bool OutputFileIsOpen = false;
 InvertedFile IV;
+const int MAXFILES = 1000;
 
 // This is called once per file.
 int yywrap(){
@@ -203,7 +159,7 @@ int yywrap(){
    	if(InputDirEntryPtr != NULL){
 		//open the next file in the list as yyin
       		InFilename = InDirname + '/'+ InputDirEntryPtr->d_name;
-		if(docID <= MAXFILESTOTAL - 1){
+		if(docID <= MAXFILES - 1){
 			yyin = fopen(InFilename.c_str(), "r");
 		
       			//if file open failed, print an error
@@ -278,123 +234,104 @@ int main(int argc, char **argv){
 		//close input and output dir
 		(void) closedir(InputDirPtr);
 
+		FILE* filePtrs[MAXFILES];
+		struct fileInfo{
+                        string term = "";
+                        float weight = 0;
+			int fileID = -1;
+                };
+
+		fileInfo buffer[MAXFILES];
 		struct dirent* OutputEntryPtr = readdir(OutputDirPtr);
 		IV.openForWrite();
 
 		unsigned int numFiles = 0;
-		while(OutputEntryPtr != NULL && numFiles < MAXFILESTOTAL){
+		while(OutputEntryPtr != NULL && numFiles < MAXFILES){
 			if(OutputEntryPtr->d_name[0] != '.'){
 				string filename = OutDirname + '/' + OutputEntryPtr->d_name;
-				filePtrs[numFiles].filename = filename.c_str();
+				filePtrs[numFiles] = fopen(filename.c_str(), "r");
 				IV.writeMapRecord(numFiles, OutputEntryPtr->d_name);
-				numFiles = (numFiles >= MAXFILESTOTAL) ? MAXFILESTOTAL : numFiles + 1;
+				numFiles = (numFiles >= MAXFILES) ? MAXFILES : numFiles + 1;
 			}
 			OutputEntryPtr = readdir(OutputDirPtr);
 		}
-		openClusterFiles(0);
+
 		bool finished = false;
 
 		string currTerm = "";
                 string minTerm = "";
                 int currFreq = 0;
-                for(size_t i = 0; i < numFiles/MAXFILESOPEN + 1; i++){
-			if(i != 0){
-				closeClusterFiles(i-1);
-				openClusterFiles(i);
-			}
-			for(size_t j = 0; j < MAXFILESOPEN; j++){
-				int currID = 0;
-                        	char tmp[256];
-                        	if(buffer[j][i].term == ""){
-					if(i*MAXFILESOPEN+j < numFiles && !feof(filePtrs[i*MAXFILESOPEN+j].fileptr)){
-						fscanf(filePtrs[i*MAXFILESOPEN+j].fileptr, "%s %d %d", tmp, &currID, &currFreq);
-                                		int cluster = currID/MAXFILESOPEN; int position = currID%MAXFILESOPEN;
-						currTerm = tmp;
-						//cout << "buffer[" << position << "][" << cluster << "]: " << currTerm << endl;
-                                		buffer[position][cluster].term = currTerm;
-						buffer[position][cluster].weight = (1 + log(currFreq))/numOfLogDocTokens[currID];
-						buffer[position][cluster].fileID = i;
-					}else{
-                                		buffer[j][i].term = ""; buffer[j][i].weight = 0;
-                                	}
-                        	}else{
-					int cluster = currID/MAXFILESOPEN; int position = currID%MAXFILESOPEN;
-					currTerm = buffer[position][cluster].term;
-                        	}
-			}
-                }	
+		int start = 0;
+                for(size_t i = 0; i < numFiles; i++){
+			int currID = 0;
+                        char tmp[256];
+                        if(buffer[i].term == ""){
+				if(!feof(filePtrs[i])){
+                                	fscanf(filePtrs[i], "%s %d %d", tmp, &currID, &currFreq);
+                                	currTerm = tmp;
+                                	buffer[currID].term = currTerm; buffer[currID].weight = (1 + log(currFreq))/numOfLogDocTokens[currID]; buffer[currID].fileID = i;
+					//cout << tmp << ": " << setw(12) << numOfLogDocTokens[currID] << "; " << setw(15) << buffer[currID].weight << endl;
+				}else{
+                                	buffer[i].term = ""; buffer[i].weight = 0;
+                                }
+                        }else{
+				currTerm = buffer[currID].term;
+                        }
+                }
+
 		while (!finished) {
-			cout << "C" << endl;
 			minTerm = "";
 
-		    	for(size_t i = 0; i < numFiles/MAXFILESOPEN + 1; i++){
-				for(size_t j = 0; j < MAXFILESOPEN; j++){
-					//cout << "buffer[" << j << "][" << i << "].term " << buffer[j][i].term << endl;
-					if (buffer[j][i].term != "" && (minTerm == "" || buffer[j][i].term < minTerm)) {
-			    			cout << j << " " << i << " " << buffer[j][i].term;
-						minTerm = buffer[j][i].term;
-					}
-		    		}
-			}
+		    	for (size_t i = 0; i < numFiles; i++) {
+				if (buffer[i].term != "" && (minTerm == "" || buffer[i].term < minTerm)) {
+			    		minTerm = buffer[i].term;
+				}
+		    	}
 
 		    	if (minTerm == ""){
 				finished = true;
 		    	}else{
 				int totalFreq = 0;
 				bool emptyFlag = true;
-				for(size_t i = 0; i < numFiles/MAXFILESOPEN + 1; i++){
-					for(size_t j = 0; j < MAXFILESOPEN; j++){
-                                        	if((minTerm != "") && (buffer[j][i].term == minTerm) && (!feof(filePtrs[buffer[j][i].fileID].fileptr))){
-							totalFreq += 1;
+				for (size_t i = 0; i < numFiles; i++) {
+                                        if ((minTerm != "") && (buffer[i].term == minTerm) && (!feof(filePtrs[buffer[i].fileID]))) {
+						totalFreq += 1;
+					}
+				}
+
+				for (size_t i = 0; i < numFiles; i++) {
+					if ((minTerm != "") && (buffer[i].term == minTerm) && (!feof(filePtrs[buffer[i].fileID]))) {
+						//cout << buffer[i].term << " " << buffer[i].weight << endl;
+						IV.writePostRecord(i, (1 + log(numFiles/totalFreq))*buffer[i].weight);
+						char tmp[256];
+						int currID;
+
+						if (!feof(filePtrs[buffer[i].fileID])) {
+				    			fscanf(filePtrs[buffer[i].fileID], "%s %d %d", tmp, &currID, &currFreq);
+				    			currTerm = tmp;
+				    			buffer[i].term = currTerm; buffer[i].weight = (1 + log(currFreq))/numOfLogDocTokens[currID];
+							//cout << tmp << ": " << setw(12) << numOfLogDocTokens[currID] << "; " << setw(15) << buffer[currID].weight << endl;
+							emptyFlag = false;
+						} else {
+				    			buffer[i].term = "";
+				    			buffer[i].weight = 0;
 						}
-					}
+			    		}else if(feof(filePtrs[buffer[i].fileID])){
+						buffer[i].term = "";
+                                	}
 				}
-
-				for(size_t i = 0; i < numFiles/MAXFILESOPEN + 1; i++){
-					if(i != 0){
-                                		cout << "A: " << i << endl;
-						closeClusterFiles(i-1);
-						cout << "B" << endl;
-                                		openClusterFiles(i);
-						cout << "C" << endl;
-                        		}
-					for(size_t j = 0; j < MAXFILESOPEN; j++){
-						fileInfo currFile = buffer[j][i];
-						cout << i << " " << j << " " << currFile.term << endl;
-						if ((minTerm != "") && (buffer[j][i].term == minTerm) && (!feof(filePtrs[currFile.fileID].fileptr))) {
-							cout << currFile.term << " " << currFile.weight << endl;
-							IV.writePostRecord(i*MAXFILESOPEN + j, (1 + log(numFiles/totalFreq))*currFile.weight);
-							char tmp[256];
-							int currID;
-
-							if (i*MAXFILESOPEN + j < numFiles && !feof(filePtrs[currFile.fileID].fileptr)) {
-								fscanf(filePtrs[currFile.fileID].fileptr, "%s %d %d", tmp, &currID, &currFreq);
-				    				currTerm = tmp;
-				    				buffer[j][i].term = currTerm; buffer[j][i].weight = (1 + log(currFreq))/numOfLogDocTokens[currID];
-								//cout << tmp << ": " << setw(12) << numOfLogDocTokens[currID] << "; " << setw(15) << buffer[currID].weight << endl;
-								emptyFlag = false;
-							}else{
-				    				buffer[j][i].term = "";
-				    				buffer[j][i].weight = 0;
-							}
-			    			}else if((i*MAXFILESOPEN + j < numFiles && feof(filePtrs[currFile.fileID].fileptr))){
-							buffer[j][i].term = "";
-                                		}
-					}
-				}
-				if(!emptyFlag){
-					if(ght.UpdateStart(minTerm, start)){
-						start += totalFreq;
-					}
+			if(!emptyFlag){
+				if(ght.UpdateStart(minTerm, start)){
+					start += totalFreq;
 				}
 			}
+		    }
 		}	
 
 		ght.PrintDict(IV, true);
 		IV.closeAfterWriting();
 		(void) closedir(OutputDirPtr);
 	}
-
 	end = clock();
 	double totalTime = double(end - start)/double(CLOCKS_PER_SEC);
 	cout << "TOOK " << totalTime << " SECONDS";
@@ -402,7 +339,6 @@ int main(int argc, char **argv){
 	//fprintf(config, "%d\n", 3*SIZE);
 	//fclose(config);
 	//stopList.Print("TESTINGFILE.txt");
-	
 	cout << "\nTOTAL TOKENS: " << numOfTotalTokens << "\n";
 	cout << "Done tokenizing. Good place to write the dict and post files.\n";
 }
