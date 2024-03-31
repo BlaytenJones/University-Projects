@@ -1,0 +1,22 @@
+# //  ModelSim SE 10.1a Feb 21 2012 Linux 4.15.0-191-generic
+# //
+# //  Copyright 1991-2012 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+cd /home/bkj011/CSCE3953/HW1
+# reading /opt/modelsim/modeltech/linux/../modelsim.ini
+vlib work
+vmap work work
+# Copying /opt/modelsim/modeltech/linux/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied /opt/modelsim/modeltech/linux/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+vmap -del work
+# Removing reference to logical library work
+# Modifying modelsim.ini
+vdel -all -lib work
+# Loading project HW1

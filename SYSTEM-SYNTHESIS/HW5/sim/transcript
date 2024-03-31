@@ -1,0 +1,319 @@
+# //  ModelSim SE 10.1a Feb 21 2012 Linux 4.15.0-191-generic
+# //
+# //  Copyright 1991-2012 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading project work
+# Compile of Register_syn.v was successful.
+# Compile of toplevel.v was successful.
+# Compile of toplevelTB.v was successful.
+# Compile of Tri-State_Buffer_syn.v was successful.
+# Compile of AND2X1.v was successful.
+# Compile of AND2X2.v was successful.
+# Compile of AND2X4.v was successful.
+# Compile of AND3X1.v was successful.
+# Compile of AND3X2.v was successful.
+# Compile of AND3X4.v was successful.
+# Compile of AND4X1.v was successful.
+# Compile of AND4X2.v was successful.
+# Compile of AND4X4.v was successful.
+# Compile of AO21X1.v was successful.
+# Compile of AO21X2.v was successful.
+# Compile of AO22X1.v was successful.
+# Compile of AO22X2.v was successful.
+# Compile of AO221X1.v was successful.
+# Compile of AO221X2.v was successful.
+# Compile of AO222X1.v was successful.
+# Compile of AO222X2.v was successful.
+# Compile of AOBUFX1.v was successful.
+# Compile of AOBUFX2.v was successful.
+# Compile of AOBUFX4.v was successful.
+# Compile of AODFFARX1.v was successful.
+# Compile of AODFFARX2.v was successful.
+# Compile of AODFFNARX1.v was successful.
+# Compile of AODFFNARX2.v was successful.
+# Compile of AOI21X1.v was successful.
+# Compile of AOI21X2.v was successful.
+# Compile of AOI22X1.v was successful.
+# Compile of AOI22X2.v was successful.
+# Compile of AOI221X1.v was successful.
+# Compile of AOI221X2.v was successful.
+# Compile of AOI222X1.v was successful.
+# Compile of AOI222X2.v was successful.
+# Compile of AOINVX1.v was successful.
+# Compile of AOINVX2.v was successful.
+# Compile of AOINVX4.v was successful.
+# Compile of CGLNPRX2.v was successful.
+# Compile of CGLNPRX8.v was successful.
+# Compile of CGLNPSX2.v was successful.
+# Compile of CGLNPSX4.v was successful.
+# Compile of CGLNPSX8.v was successful.
+# Compile of CGLNPSX16.v was successful.
+# Compile of CGLPPRX2.v was successful.
+# Compile of CGLPPRX8.v was successful.
+# Compile of CGLPPSX2.v was successful.
+# Compile of CGLPPSX4.v was successful.
+# Compile of CGLPPSX8.v was successful.
+# Compile of CGLPPSX16.v was successful.
+# Compile of DEC24X1.v was successful.
+# Compile of DEC24X2.v was successful.
+# Compile of DELLN1X2.v was successful.
+# Compile of DELLN2X2.v was successful.
+# Compile of DELLN3X2.v was successful.
+# Compile of DFFARX1.v was successful.
+# Compile of DFFARX2.v was successful.
+# Compile of DFFASRX1.v was successful.
+# Compile of DFFASRX2.v was successful.
+# Compile of DFFASX1.v was successful.
+# Compile of DFFASX2.v was successful.
+# Compile of DFFNARX1.v was successful.
+# Compile of DFFNARX2.v was successful.
+# Compile of DFFNASRNX1.v was successful.
+# Compile of DFFNASRNX2.v was successful.
+# Compile of DFFNASRQX1.v was successful.
+# Compile of DFFNASRQX2.v was successful.
+# Compile of DFFNASRX1.v was successful.
+# Compile of DFFNASRX2.v was successful.
+# Compile of DFFNASX1.v was successful.
+# Compile of DFFNASX2.v was successful.
+# Compile of DFFNX1.v was successful.
+# Compile of DFFNX2.v was successful.
+# Compile of DFFSSRX1.v was successful.
+# Compile of DFFSSRX2.v was successful.
+# Compile of DFFX1.v was successful.
+# Compile of DFFX2.v was successful.
+# Compile of FADDX1.v was successful.
+# Compile of FADDX2.v was successful.
+# Compile of HADDX1.v was successful.
+# Compile of HADDX2.v was successful.
+# Compile of IBUFFX2.v was successful.
+# Compile of IBUFFX4.v was successful.
+# Compile of IBUFFX8.v was successful.
+# Compile of IBUFFX16.v was successful.
+# Compile of IBUFFX32.v was successful.
+# Compile of INVX0.v was successful.
+# Compile of INVX1.v was successful.
+# Compile of INVX2.v was successful.
+# Compile of INVX4.v was successful.
+# Compile of INVX8.v was successful.
+# Compile of INVX16.v was successful.
+# Compile of INVX32.v was successful.
+# Compile of ISOLANDX1.v was successful.
+# Compile of ISOLANDX2.v was successful.
+# Compile of ISOLANDX4.v was successful.
+# Compile of ISOLANDX8.v was successful.
+# Compile of ISOLORX1.v was successful.
+# Compile of ISOLORX2.v was successful.
+# Compile of ISOLORX4.v was successful.
+# Compile of ISOLORX8.v was successful.
+# Compile of LARX1.v was successful.
+# Compile of LARX2.v was successful.
+# Compile of LASRNX1.v was successful.
+# Compile of LASRNX2.v was successful.
+# Compile of LASRQX1.v was successful.
+# Compile of LASRQX2.v was successful.
+# Compile of LASRX1.v was successful.
+# Compile of LASRX2.v was successful.
+# Compile of LASX1.v was successful.
+# Compile of LASX2.v was successful.
+# Compile of LATCHX1.v was successful.
+# Compile of LATCHX2.v was successful.
+# Compile of LNANDX1.v was successful.
+# Compile of LNANDX2.v was successful.
+# Compile of LSDNENx1.v was successful.
+# Compile of LSDNENx2.v was successful.
+# Compile of LSDNENx4.v was successful.
+# Compile of LSDNENx8.v was successful.
+# Compile of LSDNX1.v was successful.
+# Compile of LSDNX2.v was successful.
+# Compile of LSDNX4.v was successful.
+# Compile of LSDNX8.v was successful.
+# Compile of LSUPENx1.v was successful.
+# Compile of LSUPENx2.v was successful.
+# Compile of LSUPENx4.v was successful.
+# Compile of LSUPENx8.v was successful.
+# Compile of LSUPX1.v was successful.
+# Compile of LSUPX2.v was successful.
+# Compile of LSUPX4.v was successful.
+# Compile of LSUPX8.v was successful.
+# Compile of MUX21X1.v was successful.
+# Compile of MUX21X2.v was successful.
+# Compile of MUX41X1.v was successful.
+# Compile of MUX41X2.v was successful.
+# Compile of NAND2X0.v was successful.
+# Compile of NAND2X1.v was successful.
+# Compile of NAND2X2.v was successful.
+# Compile of NAND2X4.v was successful.
+# Compile of NAND3X0.v was successful.
+# Compile of NAND3X1.v was successful.
+# Compile of NAND3X2.v was successful.
+# Compile of NAND3X4.v was successful.
+# Compile of NAND4X0.v was successful.
+# Compile of NAND4X1.v was successful.
+# Compile of NBUFFX2.v was successful.
+# Compile of NBUFFX4.v was successful.
+# Compile of NBUFFX8.v was successful.
+# Compile of NBUFFX16.v was successful.
+# Compile of NBUFFX32.v was successful.
+# Compile of NOR2X0.v was successful.
+# Compile of NOR2X1.v was successful.
+# Compile of NOR2X2.v was successful.
+# Compile of NOR2X4.v was successful.
+# Compile of NOR3X0.v was successful.
+# Compile of NOR3X1.v was successful.
+# Compile of NOR3X2.v was successful.
+# Compile of NOR3X4.v was successful.
+# Compile of NOR4X0.v was successful.
+# Compile of NOR4X1.v was successful.
+# Compile of OA21X1.v was successful.
+# Compile of OA21X2.v was successful.
+# Compile of OA22X1.v was successful.
+# Compile of OA22X2.v was successful.
+# Compile of OA221X1.v was successful.
+# Compile of OA221X2.v was successful.
+# Compile of OA222X1.v was successful.
+# Compile of OA222X2.v was successful.
+# Compile of OAI21X1.v was successful.
+# Compile of OAI21X2.v was successful.
+# Compile of OAI22X1.v was successful.
+# Compile of OAI22X2.v was successful.
+# Compile of OAI221X1.v was successful.
+# Compile of OAI221X2.v was successful.
+# Compile of OAI222X1.v was successful.
+# Compile of OAI222X2.v was successful.
+# Compile of OR2X1.v was successful.
+# Compile of OR2X2.v was successful.
+# Compile of OR2X4.v was successful.
+# Compile of OR3X1.v was successful.
+# Compile of OR3X2.v was successful.
+# Compile of OR3X4.v was successful.
+# Compile of OR4X1.v was successful.
+# Compile of OR4X2.v was successful.
+# Compile of OR4X4.v was successful.
+# Compile of RDFFNX1.v was successful.
+# Compile of RDFFNX2.v was successful.
+# Compile of RDFFX1.v was successful.
+# Compile of RDFFX2.v was successful.
+# Compile of RSDFFNX1.v was successful.
+# Compile of RSDFFNX2.v was successful.
+# Compile of RSDFFX1.v was successful.
+# Compile of RSDFFX2.v was successful.
+# Compile of SDFFARX1.v was successful.
+# Compile of SDFFARX2.v was successful.
+# Compile of SDFFASRSX1.v was successful.
+# Compile of SDFFASRSX2.v was successful.
+# Compile of SDFFASRX1.v was successful.
+# Compile of SDFFASRX2.v was successful.
+# Compile of SDFFASX1.v was successful.
+# Compile of SDFFASX2.v was successful.
+# Compile of SDFFNARX1.v was successful.
+# Compile of SDFFNARX2.v was successful.
+# Compile of SDFFNASRX1.v was successful.
+# Compile of SDFFNASRX2.v was successful.
+# Compile of SDFFNASX1.v was successful.
+# Compile of SDFFNASX2.v was successful.
+# Compile of SDFFNX1.v was successful.
+# Compile of SDFFNX2.v was successful.
+# Compile of SDFFSSRX1.v was successful.
+# Compile of SDFFSSRX2.v was successful.
+# Compile of SDFFX1.v was successful.
+# Compile of SDFFX2.v was successful.
+# Compile of TNBUFFHX1.v was successful.
+# Compile of TNBUFFHX2.v was successful.
+# Compile of TNBUFFHX4.v was successful.
+# Compile of TNBUFFHX8.v was successful.
+# Compile of TNBUFFHX16.v was successful.
+# Compile of TNBUFFHX32.v was successful.
+# Compile of XNOR2X1.v was successful.
+# Compile of XNOR2X2.v was successful.
+# Compile of XNOR3X1.v was successful.
+# Compile of XNOR3X2.v was successful.
+# Compile of XOR2X1.v was successful.
+# Compile of XOR2X2.v was successful.
+# Compile of XOR3X1.v was successful.
+# Compile of XOR3X2.v was successful.
+# 228 compiles, 0 failed with no errors. 
+vopt +acc toplevelTB -o toplevelTB_opt
+# Model Technology ModelSim SE vopt 10.1a Compiler 2012.02 Feb 21 2012
+# ** Warning: (vopt-29) Unable to get status of file "/sys/kernel/debug/tracing".
+# Permission denied. (errno = EACCES)
+# 
+# Top level modules:
+# 	toplevelTB
+# 
+# Analyzing design...
+# -- Loading module toplevelTB
+# -- Loading module busdriver
+# -- Loading module dff
+# -- Loading module DFFARX2
+# -- Loading UDP s_dffarx2_Q
+# -- Loading module INVX4
+# -- Loading module MUX21X1
+# -- Loading UDP s_mux21x1
+# -- Loading module tristate
+# -- Loading module TNBUFFHX4
+# Optimizing 10 design-units (inlining 16 instances):
+# -- Inlining UDP s_dffarx2_Q
+# -- Optimizing module DFFARX2(fast)
+# -- Inlining UDP s_mux21x1
+# -- Optimizing module MUX21X1(fast)
+# -- Optimizing module toplevelTB(fast)
+# -- Optimizing module dff(fast)
+# ** Warning: /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(8): (vopt-2685) [TFMPC] - Too few port connections for '\q_reg[3] '.  Expected 5, found 4.
+# ** Warning: /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(8): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(9): (vopt-2685) [TFMPC] - Too few port connections for '\q_reg[2] '.  Expected 5, found 4.
+# ** Warning: /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(9): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(10): (vopt-2685) [TFMPC] - Too few port connections for '\q_reg[1] '.  Expected 5, found 4.
+# ** Warning: /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(10): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(11): (vopt-2685) [TFMPC] - Too few port connections for '\q_reg[0] '.  Expected 5, found 4.
+# ** Warning: /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(11): (vopt-2718) [TFMPC] - Missing connection for port 'QN'.
+# -- Optimizing module busdriver(fast)
+# -- Optimizing module TNBUFFHX4(fast)
+# -- Optimizing module tristate(fast)
+# -- Optimizing module INVX4(fast)
+# Optimized design name is toplevelTB_opt
+vsim toplevelTB_opt
+# vsim toplevelTB_opt 
+# Loading work.toplevelTB(fast)
+# Loading work.busdriver(fast)
+# Loading work.dff(fast)
+# Loading work.DFFARX2(fast)
+# Loading work.INVX4(fast)
+# Loading work.MUX21X1(fast)
+# Loading work.tristate(fast)
+# Loading work.TNBUFFHX4(fast)
+# ** Warning: (vsim-3017) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(8): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /toplevelTB/bus/reg0/\q_reg[3] 
+# ** Warning: (vsim-3722) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(8): [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: (vsim-3017) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(9): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /toplevelTB/bus/reg0/\q_reg[2] 
+# ** Warning: (vsim-3722) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(9): [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: (vsim-3017) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(10): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /toplevelTB/bus/reg0/\q_reg[1] 
+# ** Warning: (vsim-3722) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(10): [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: (vsim-3017) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(11): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /toplevelTB/bus/reg0/\q_reg[0] 
+# ** Warning: (vsim-3722) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(11): [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: (vsim-3017) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(8): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /toplevelTB/bus/reg1/\q_reg[3] 
+# ** Warning: (vsim-3722) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(8): [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: (vsim-3017) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(9): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /toplevelTB/bus/reg1/\q_reg[2] 
+# ** Warning: (vsim-3722) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(9): [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: (vsim-3017) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(10): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /toplevelTB/bus/reg1/\q_reg[1] 
+# ** Warning: (vsim-3722) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(10): [TFMPC] - Missing connection for port 'QN'.
+# ** Warning: (vsim-3017) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(11): [TFMPC] - Too few port connections. Expected 5, found 4.
+#         Region: /toplevelTB/bus/reg1/\q_reg[0] 
+# ** Warning: (vsim-3722) /home/bkj011/CSCE3953/HW5/sim/Register_syn.v(11): [TFMPC] - Missing connection for port 'QN'.
+view wave
+# .main_pane.wave.interior.cs.body.pw.wf
+add wave sim:/toplevelTB/*
+run
+run
+run
+exit

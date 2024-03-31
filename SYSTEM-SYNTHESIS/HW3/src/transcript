@@ -1,0 +1,107 @@
+# //  ModelSim SE 10.1a Feb 21 2012 Linux 4.15.0-191-generic
+# //
+# //  Copyright 1991-2012 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+vopt +acc stimulusCounter -o stimulusCounter_opt
+# Model Technology ModelSim SE vopt 10.1a Compiler 2012.02 Feb 21 2012
+# ** Warning: (vopt-29) Unable to get status of file "/sys/kernel/debug/tracing".
+# Permission denied. (errno = EACCES)
+# 
+# Top level modules:
+# 	stimulusCounter
+# 
+# Analyzing design...
+# -- Loading module stimulusCounter
+# -- Loading module counter
+# Optimizing 2 design-units (inlining 0 instances):
+# -- Optimizing module counter(fast)
+# -- Optimizing module stimulusCounter(fast)
+# Optimized design name is stimulusCounter_opt
+vopt +acc BCDTB -o BCDTB_opt
+# Model Technology ModelSim SE vopt 10.1a Compiler 2012.02 Feb 21 2012
+# ** Warning: (vopt-29) Unable to get status of file "/sys/kernel/debug/tracing".
+# Permission denied. (errno = EACCES)
+# 
+# Top level modules:
+# 	BCDTB
+# 
+# Analyzing design...
+# -- Loading module BCDTB
+# -- Loading module BCD
+# Optimizing 2 design-units (inlining 0 instances):
+# -- Optimizing module BCDTB(fast)
+# -- Optimizing module BCD(fast)
+# Optimized design name is BCDTB_opt
+vsim stimulusCounter_opt
+# vsim stimulusCounter_opt 
+# Loading work.stimulusCounter(fast)
+# Loading work.counter(fast)
+quit -sim
+vlog -reportprogress 300 -work work /home/bkj011/CSCE3953/HW3/src/1sCounter.v
+# Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 21 2012
+# -- Compiling module counter
+# 
+# Top level modules:
+# 	counter
+vlog -reportprogress 300 -work work /home/bkj011/CSCE3953/HW3/src/BCD.v
+# Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 21 2012
+# -- Compiling module BCD
+# 
+# Top level modules:
+# 	BCD
+vlog -reportprogress 300 -work work /home/bkj011/CSCE3953/HW3/src/BCDTB.v
+# Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 21 2012
+# -- Compiling module BCDTB
+# 
+# Top level modules:
+# 	BCDTB
+vlog -reportprogress 300 -work work /home/bkj011/CSCE3953/HW3/src/stimulusCounter.v
+# Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 21 2012
+# -- Compiling module stimulusCounter
+# 
+# Top level modules:
+# 	stimulusCounter
+vopt +acc stimulusCounter -o stimulusCounter_opt
+# Model Technology ModelSim SE vopt 10.1a Compiler 2012.02 Feb 21 2012
+# ** Warning: (vopt-29) Unable to get status of file "/sys/kernel/debug/tracing".
+# Permission denied. (errno = EACCES)
+# 
+# Top level modules:
+# 	stimulusCounter
+# 
+# Analyzing design...
+# -- Loading module stimulusCounter
+# -- Loading module counter
+# Optimizing 2 design-units (inlining 0 instances):
+# -- Optimizing module counter(fast)
+# -- Optimizing module stimulusCounter(fast)
+# Optimized design name is stimulusCounter_opt
+vopt +acc BCDTB -o BCDTB_opt
+# Model Technology ModelSim SE vopt 10.1a Compiler 2012.02 Feb 21 2012
+# ** Warning: (vopt-29) Unable to get status of file "/sys/kernel/debug/tracing".
+# Permission denied. (errno = EACCES)
+# 
+# Top level modules:
+# 	BCDTB
+# 
+# Analyzing design...
+# -- Loading module BCDTB
+# -- Loading module BCD
+# Optimizing 2 design-units (inlining 0 instances):
+# -- Optimizing module BCDTB(fast)
+# -- Optimizing module BCD(fast)
+# Optimized design name is BCDTB_opt
+vsim stimulusCounter_opt
+# vsim stimulusCounter_opt 
+# Loading work.stimulusCounter(fast)
+# Loading work.counter(fast)
+view wave
+# .main_pane.wave.interior.cs.body.pw.wf
+add wave sim:/stimulusCounter/*
+run
+exit

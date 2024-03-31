@@ -1,0 +1,20 @@
+Thu Oct 26 03:22:51 PM CDT 2023
+Trace back: can't read "_clients(.main_pane.wave)": no such element in array
+    while executing
+"set co $_clients($client)"
+    (object "::.bookmarkmgr" method "::vsimwidgets::bookmarkmgr::_client_restore" body line 4)
+    invoked from within
+"::.bookmarkmgr _client_restore .main_pane.wave"
+    (in namespace inscope "::vsimwidgets::bookmarkmgr" script line 1)
+    invoked from within
+"namespace inscope ::vsimwidgets::bookmarkmgr {::.bookmarkmgr _client_restore .main_pane.wave}"
+    ("after" script)
+  <2: ::tkerror {can't read "_clients(.main_pane.wave)": no such element in array}
+  <1: ::bgerror {can't read "_clients(.main_pane.wave)": no such element in array}
+Thu Oct 26 03:23:21 PM CDT 2023
+Trace back: invalid command name ".main_pane.wave.interior.cs.body.pw.wf.tree.tree2"
+    while executing
+".main_pane.wave.interior.cs.body.pw.wf.tree.tree2 update"
+    ("after" script)
+  <2: ::tkerror {invalid command name ".main_pane.wave.interior.cs.body.pw.wf.tree.tree2"}
+  <1: ::bgerror {invalid command name ".main_pane.wave.interior.cs.body.pw.wf.tree.tree2"}

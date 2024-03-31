@@ -1,0 +1,149 @@
+# //  ModelSim SE 10.1a Feb 21 2012 Linux 4.15.0-191-generic
+# //
+# //  Copyright 1991-2012 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Project file /home/bkj011/CSCE3953/HW4/sim/work.mpf was not found.
+# Unable to open project.
+vsim work.raceLightController
+# vsim work.raceLightController 
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-29) Unable to get status of file "/sys/kernel/debug/tracing".
+# Permission denied. (errno = EACCES)
+# Loading work.raceLightController(fast)
+vopt +acc raceLightControllerTB -o raceLightControllerTB_opt
+# Model Technology ModelSim SE vopt 10.1a Compiler 2012.02 Feb 21 2012
+# ** Warning: (vopt-29) Unable to get status of file "/sys/kernel/debug/tracing".
+# Permission denied. (errno = EACCES)
+# 
+# Top level modules:
+# 	raceLightControllerTB
+# 
+# Analyzing design...
+# -- Loading module raceLightControllerTB
+# -- Loading module raceLightController
+# Incremental compilation check found no design-units have changed.
+# Optimized design name is raceLightControllerTB_opt
+vsim raceLightControllerTB_opt
+# vsim raceLightControllerTB_opt 
+# Loading work.raceLightControllerTB(fast)
+# Loading work.raceLightController(fast)
+vopt +acc raceLightControllerTB -o raceLightControllerTB_opt
+# Model Technology ModelSim SE vopt 10.1a Compiler 2012.02 Feb 21 2012
+# ** Warning: (vopt-29) Unable to get status of file "/sys/kernel/debug/tracing".
+# Permission denied. (errno = EACCES)
+# 
+# Top level modules:
+# 	raceLightControllerTB
+# 
+# Analyzing design...
+# -- Loading module raceLightControllerTB
+# -- Loading module raceLightController
+# Incremental compilation check found no design-units have changed.
+# Optimized design name is raceLightControllerTB_opt
+vsim raceLightControllerTB_opt
+# vsim raceLightControllerTB_opt 
+# Loading work.raceLightControllerTB(fast)
+# Loading work.raceLightController(fast)
+vlog -reportprogress 300 -work work /home/bkj011/CSCE3953/HW4/src/raceLightController.v
+# Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 21 2012
+# -- Compiling module raceLightController
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(17): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(17): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(17): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(25): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(25): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(25): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(29): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(29): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(29): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(33): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(33): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(33): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(37): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(37): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(37): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(41): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(41): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(41): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(45): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(45): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(45): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(49): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(49): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(49): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(53): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(53): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(53): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(57): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(57): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(57): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(61): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(61): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(61): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(65): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(65): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(65): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(69): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(69): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(69): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(73): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(73): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(73): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(77): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(77): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(77): (vlog-2110) Illegal reference to net "green".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(81): (vlog-2110) Illegal reference to net "red".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(81): (vlog-2110) Illegal reference to net "yellow".
+# ** Error: /home/bkj011/CSCE3953/HW4/src/raceLightController.v(81): (vlog-2110) Illegal reference to net "green".
+vlog -reportprogress 300 -work work /home/bkj011/CSCE3953/HW4/src/raceLightControllerTB.v
+# Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 21 2012
+# -- Compiling module raceLightControllerTB
+# 
+# Top level modules:
+# 	raceLightControllerTB
+vlog -reportprogress 300 -work work /home/bkj011/CSCE3953/HW4/src/raceLightController.v
+# Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 21 2012
+# -- Compiling module raceLightController
+# 
+# Top level modules:
+# 	raceLightController
+vlog -reportprogress 300 -work work /home/bkj011/CSCE3953/HW4/src/raceLightControllerTB.v
+# Model Technology ModelSim SE vlog 10.1a Compiler 2012.02 Feb 21 2012
+# -- Compiling module raceLightControllerTB
+# 
+# Top level modules:
+# 	raceLightControllerTB
+vopt +acc raceLightControllerTB -o raceLightControllerTB_opt
+# Model Technology ModelSim SE vopt 10.1a Compiler 2012.02 Feb 21 2012
+# ** Warning: (vopt-29) Unable to get status of file "/sys/kernel/debug/tracing".
+# Permission denied. (errno = EACCES)
+# 
+# Top level modules:
+# 	raceLightControllerTB
+# 
+# Analyzing design...
+# -- Loading module raceLightControllerTB
+# -- Loading module raceLightController
+# Incremental compilation check found 1 design-unit (out of 2) may be reused.
+# Optimizing 1 design-unit (inlining 0 instances):
+# -- Optimizing module raceLightController(fast)
+# ** Note: (vopt-143) Recognized 1 FSM in module "raceLightController(fast)".
+# Optimized design name is raceLightControllerTB_opt
+vsim raceLightControllerTB_opt
+# vsim raceLightControllerTB_opt 
+# Loading work.raceLightControllerTB(fast)
+# Loading work.raceLightController(fast)
+view wave
+# .main_pane.wave.interior.cs.body.pw.wf
+add wave sim:/raceLightControllerTB/*
+run
+run
+run
+run
+run
+exit
